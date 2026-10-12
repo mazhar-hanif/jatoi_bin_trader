@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Redirecting - Jatoi Bin Trader</title>
+</head>
+<body>
+  <script>
+    (function () {
+      const pieces = location.pathname.split('/').filter(Boolean);
+      const base = pieces.length ? '/' + pieces[0] + '/' : '/';
+      const query = location.search;
+      const hash = location.hash;
+      location.replace(base + '?p=' + encodeURIComponent(location.pathname) +
+        '&q=' + encodeURIComponent(query) + '&h=' + encodeURIComponent(hash));
+    }());
+  </script>
+  <p>Redirecting to Jatoi Bin Trader… / جارٍ التوجيه إلى جتوي بن تريدر…</p>
+</body>
+</html>

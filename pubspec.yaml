@@ -1,0 +1,44 @@
+name: jatoi_bin_trader
+description: Jatoi Bin Trader - rice import/export app (Bahrain). UI version, works offline without Firebase.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.0
+  shared_preferences: ^2.3.2
+  shared_preferences_platform_interface: ^2.4.1
+  file_picker: ^10.1.2
+  crypto: ^3.0.7
+  pdf: ^3.13.1
+  printing: ^5.15.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  web:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    background_color: "#F7FAF7"
+    theme_color: "#1B5E20"

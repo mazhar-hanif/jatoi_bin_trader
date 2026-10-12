@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Order quality rice in bulk from Jatoi Bin Trader in Bahrain. Browse products, request quotes and manage local demo orders.">
+  <meta name="theme-color" content="#1B5E20">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https: wss:; object-src 'none'; base-uri 'self';">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jatoi Bin Trader">
+  <meta property="og:description" content="Quality rice import and export ordering in Bahrain.">
+  <meta property="og:image" content="icons/Icon-512.png">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Jatoi Bin Trader">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/Icon-192.png"/>
+
+  <title>Jatoi Bin Trader</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #f7faf7; }
+    #loading-splash {
+      position: fixed; inset: 0; z-index: 10; display: grid;
+      place-content: center; justify-items: center; gap: 18px;
+      color: #1B5E20; font: 600 18px system-ui, sans-serif;
+      transition: opacity .2s ease;
+    }
+    #loading-splash img { width: 96px; height: 96px; object-fit: contain; }
+    #loading-splash .spinner {
+      width: 28px; height: 28px; border: 3px solid #c8e6c9;
+      border-top-color: #1B5E20; border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    #new-version {
+      display: none; position: fixed; z-index: 20; inset-inline: 12px;
+      bottom: 12px; max-width: 520px; margin: auto; padding: 12px 16px;
+      border-radius: 12px; background: #1B5E20; color: white;
+      font: 14px system-ui, sans-serif; box-shadow: 0 4px 20px #0003;
+    }
+    #new-version button {
+      margin-inline-start: 12px; border: 0; background: transparent;
+      color: white; font: inherit; font-weight: 700; cursor: pointer;
+    }
+    #boot-failure {
+      display: none; position: fixed; inset: 0; z-index: 30; overflow: auto;
+      box-sizing: border-box; padding: 28px 18px; background: #f7faf7;
+      color: #18351a; font: 16px/1.55 system-ui, sans-serif;
+    }
+    #boot-failure .panel {
+      max-width: 700px; margin: 8vh auto; padding: 24px;
+      border: 1px solid #c8e6c9; border-radius: 16px; background: white;
+      box-shadow: 0 8px 36px #0002;
+    }
+    #boot-failure h1 { margin-top: 0; color: #1B5E20; }
+    #boot-failure li { margin-block: 6px; }
+    #boot-failure code { display: block; overflow-wrap: anywhere; }
+    #boot-failure button {
+      border: 0; border-radius: 10px; padding: 11px 18px;
+      background: #1B5E20; color: white; font: inherit; cursor: pointer;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="loading-splash" role="status" aria-live="polite">
+    <img src="icons/Icon-192.png" alt="Jatoi Bin Trader / جتوي بن تريدر">
+    <span>Jatoi Bin Trader / جتوي بن تريدر</span>
+    <span class="spinner" aria-hidden="true"></span>
+  </div>
+  <main id="boot-failure" role="alert" aria-live="assertive">
+    <section class="panel">
+      <h1>Jatoi Bin Trader could not start / تعذر بدء تطبيق جتوي بن تريدر</h1>
+      <p>
+        Flutter did not finish starting. Check your internet connection, VPN and
+        firewall; hard refresh with Ctrl+Shift+R; clear this site's data;
+        or try another browser.
+        لم يكتمل تشغيل التطبيق. تحقق من الإنترنت وVPN وجدار الحماية؛
+        حدّث بقوة باستخدام Ctrl+Shift+R؛ امسح بيانات هذا الموقع؛ أو جرّب متصفحاً آخر.
+      </p>
+      <p>
+        For a local offline build, run
+        <code>flutter build web --release --no-web-resources-cdn</code>
+        and serve <code>build/web</code>.
+        للبناء المحلي دون اتصال، استخدم الأمر أعلاه وخادم ملفات محلياً.
+      </p>
+      <p>Failed resource / المورد الذي تعذر تحميله:</p>
+      <code id="failed-resource">Not detected / لم يتم تحديده</code>
+      <p>Checklist / قائمة التحقق</p>
+      <ul>
+        <li>Network, VPN, firewall / الشبكة وVPN وجدار الحماية</li>
+        <li>Hard refresh (Ctrl+Shift+R) / تحديث قوي</li>
+        <li>Clear site data / مسح بيانات الموقع</li>
+        <li>Try another browser / تجربة متصفح آخر</li>
+        <li>Build with local web resources / البناء بموارد محلية</li>
+      </ul>
+      <button type="button" onclick="location.reload()">Reload / إعادة التحميل</button>
+    </section>
+  </main>
+  <div id="new-version" role="status">
+    New version available - refresh · يتوفر إصدار جديد - حدّث الصفحة
+    <button type="button" onclick="location.reload()">Refresh / تحديث</button>
+  </div>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const savedPath = params.get('p');
+      if (savedPath && savedPath.startsWith('/') && !savedPath.startsWith('//')) {
+        const query = params.get('q') || '';
+        const hash = params.get('h') || '';
+        history.replaceState(null, '', savedPath + query + hash);
+      }
+      function showBootFailure(resource) {
+        const splash = document.getElementById('loading-splash');
+        const failure = document.getElementById('boot-failure');
+        const failedResource = document.getElementById('failed-resource');
+        if (resource && failedResource) failedResource.textContent = resource;
+        if (splash) splash.style.display = 'none';
+        if (failure) failure.style.display = 'block';
+      }
+      function hideLoadingSplash() {
+        const splash = document.getElementById('loading-splash');
+        if (splash) splash.remove();
+      }
+      window.addEventListener('jatoi-flutter-ready', hideLoadingSplash);
+      window.addEventListener('jatoi-flutter-error', function (event) {
+        showBootFailure(event.detail || 'Flutter bootstrap failed');
+      });
+      window.addEventListener('error', function (event) {
+        const target = event.target;
+        const resource = target && (target.src || target.href);
+        if (resource || event.message) {
+          showBootFailure(resource || event.message);
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function (event) {
+        const reason = event.reason;
+        showBootFailure(reason && (reason.stack || reason.message) || reason || 'Unhandled promise rejection');
+      });
+      window.setTimeout(function () {
+        if (document.getElementById('loading-splash')) {
+          showBootFailure('Startup exceeded 25 seconds / تجاوز بدء التشغيل ٢٥ ثانية');
+        }
+      }, 25000);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then(function (registration) {
+          registration.addEventListener('updatefound', function () {
+            const worker = registration.installing;
+            if (!worker) return;
+            worker.addEventListener('statechange', function () {
+              if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+                const banner = document.getElementById('new-version');
+                if (banner) banner.style.display = 'block';
+              }
+            });
+          });
+        });
+      }
+    }());
+  </script>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
